@@ -20,3 +20,22 @@ module.exports.addQuote = function(req,res) {
         res.json({quote: quote});
     });
 }; 
+
+
+module.exports.updateQuote = function(req, res, id) {  
+        Quote.findByIdAndUpdate(id, {$set: req.body.quote}, function(err, quote) {
+            if (err) {
+                res.send(err);
+            };
+            res.json({quote: quote});
+        });
+};
+
+module.exports.deleteQuote = function(req, res, id) {  
+        Quote.findByIdAndRemove(id, function(err, quote) {
+           if (err) {
+                res.send(err);
+           }
+            res.json({quote: quote});
+        });
+};
