@@ -12,6 +12,7 @@ module.exports.getAllQuotes = function(req, res) {
 
 module.exports.addQuote = function(req,res) {  
     var quote = new Quote(req.body.quote);
+    console.log(quote);
     quote.save(function(err) {
         if (err) {
             res.send(err);
